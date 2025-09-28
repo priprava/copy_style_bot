@@ -2,7 +2,7 @@ from aiogram import Router, types
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, BufferedInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from config import STYLE
 from utils.generate_image import generate_picture
@@ -44,9 +44,11 @@ async def prompt_process(message: types.Message, state: FSMContext):
     data = await state.get_data()
     await state.clear()
     #Типо функция обработки описания
+    buffered_photo = BufferedInputFile(await generate_picture(data.get("style"), prompt), filename="photo.png")
     #-------------------------------
     await message.answer("генерируется")
-    await message.answer_photo(photo = await generate_picture(data.get("style"), prompt))
+    await message.answer_photo(photo = buffered_photo)
+
 
 
 
