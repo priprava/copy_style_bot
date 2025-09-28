@@ -2,7 +2,7 @@ import random
 from comfy_api_simplified import ComfyApiWrapper, ComfyWorkflowWrapper
 
 api = ComfyApiWrapper()
-wf = ComfyWorkflowWrapper("workflow.json")
+wf = ComfyWorkflowWrapper("/content/copy_style_bot/utils/copyworkflow.json")
 
 async def generate_picture(style: str, prompt: str):
     wf.set_node_param(
@@ -17,3 +17,4 @@ async def generate_picture(style: str, prompt: str):
 
     for _, image_data in results.items():
         return image_data
+
