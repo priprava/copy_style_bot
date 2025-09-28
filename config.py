@@ -1,5 +1,6 @@
 BOT_TOKEN=""
 STYLE={
-    "bartolomeobari":"bartolomeobari"
-
+    "bartolomeobari":"bartolomeobari",
+    "wao":"wao"
 }
+
