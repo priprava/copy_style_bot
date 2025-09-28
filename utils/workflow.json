@@ -106,7 +106,7 @@
   },
   "10": {
     "inputs": {
-      "lora_name": "bartostyle.safetensors",
+      "lora_name": "bartolomeobari.safetensors",
       "strength_model": 1,
       "strength_clip": 1,
       "model": [
