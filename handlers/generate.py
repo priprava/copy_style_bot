@@ -43,11 +43,16 @@ async def prompt_process(message: types.Message, state: FSMContext):
     prompt = message.text
     data = await state.get_data()
     await state.clear()
-    #Типо функция обработки описания
-    buffered_photo = BufferedInputFile(await generate_picture(data.get("style"), prompt), filename="photo.png")
-    #-------------------------------
+
     await message.answer("генерируется")
-    await message.answer_photo(photo = buffered_photo)
+    try:
+        #Типо функция обработки описания
+        buffered_photo = BufferedInputFile(await generate_picture(data.get("style"), prompt), filename="photo.png")
+        #-------------------------------
+        await message.answer_photo(photo = buffered_photo)
+    except Exception as e:
+        await message.answer(e)
+
 
 
 
