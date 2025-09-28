@@ -13,12 +13,13 @@ async def generate_picture(style: str, prompt: str):
         value=random.randint(0, 2**63 - 1)
     )
 
-    wf.set_node_param(title="positive", param="text", value=f"<lora:{style}:0.6> " + prompt)
+    wf.set_node_param(title="positive", param="text", value=f"masterpiece, best quality, highly detailed. {prompt} <lora:{style}:0.6>")
  
     results = api.queue_and_wait_images(wf, "Save Image")
 
     for _, image_data in results.items():
         return image_data
+
 
 
 
