@@ -1,5 +1,7 @@
 import random
 from comfy_api_simplified import ComfyApiWrapper, ComfyWorkflowWrapper
+import nest_asyncio
+nest_asyncio.apply()
 
 api = ComfyApiWrapper()
 wf = ComfyWorkflowWrapper("workflow.json")
@@ -17,6 +19,7 @@ async def generate_picture(style: str, prompt: str):
 
     for _, image_data in results.items():
         return image_data
+
 
 
 
