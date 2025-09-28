@@ -8,7 +8,7 @@
       "scheduler": "normal",
       "denoise": 1,
       "model": [
-        "10",
+        "12",
         0
       ],
       "positive": [
@@ -53,7 +53,7 @@
     "inputs": {
       "text": "",
       "clip": [
-        "10",
+        "12",
         1
       ]
     },
@@ -66,7 +66,7 @@
     "inputs": {
       "text": "text, watermark, lazyneg",
       "clip": [
-        "10",
+        "12",
         1
       ]
     },
@@ -107,8 +107,8 @@
   "10": {
     "inputs": {
       "lora_name": "bartolomeobari.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
+      "strength_model": 1.4,
+      "strength_clip": 2,
       "model": [
         "4",
         0
@@ -120,7 +120,26 @@
     },
     "class_type": "LoraLoader",
     "_meta": {
-      "title": "Load LoRA"
+      "title": "bartolomeo"
+    }
+  },
+  "12": {
+    "inputs": {
+      "lora_name": "wao.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "10",
+        0
+      ],
+      "clip": [
+        "10",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "wao"
     }
   }
 }
