@@ -2,7 +2,7 @@ from aiogram import Dispatcher, Bot, types
 from config import BOT_TOKEN
 from handlers.start import start_router 
 from handlers.generate import generate_router
-import asyncio, logging
+import asyncio, logging, os
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
@@ -18,6 +18,7 @@ async def startup():
 
 if __name__ == "__main__":
     try:
+        os.chdir(os.getcwd())
         logging.basicConfig(level=logging.DEBUG)
         asyncio.run(startup())
     except KeyboardInterrupt:
