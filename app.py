@@ -18,7 +18,7 @@ async def startup():
 
 if __name__ == "__main__":
     try:
-        os.chdir(os.path.abspath(__file__))
+        os.chdir(os.path.dirname(os.path.abspath(__file__)))
         logging.basicConfig(level=logging.DEBUG)
         asyncio.run(startup())
     except KeyboardInterrupt:

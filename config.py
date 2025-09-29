@@ -20,6 +20,5 @@ STYLE={
             "strength_clip": 1
         }
     },
-    "wao":"wao"
 }
 

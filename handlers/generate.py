@@ -48,12 +48,12 @@ async def prompt_process(message: types.Message, state: FSMContext):
     await message.answer("генерируется")
     try:
         #Типо функция обработки описания
-        #buffered_photo = BufferedInputFile(await fake_generate_picture(), filename="photo.jpg")
+        #buffered_photo = BufferedInputFile(await fake_generate_picture(data.get("style")), filename="photo.jpg")
         buffered_photo = BufferedInputFile(await generate_picture(data.get("style"), prompt), filename="photo.png")
         #-------------------------------
         await message.answer_photo(photo = buffered_photo)
     except Exception as e:
-        await message.answer(e)
+        await message.answer(str(e))
 
 
 
