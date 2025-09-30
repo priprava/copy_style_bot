@@ -1,0 +1,18 @@
+{
+    "bartolomeobari":
+    {
+        "file":"bartolomeobari.safetensors",
+        "model_strenght": 1.4,
+        "model_clip": 2,
+        "positive": "",
+        "negative": ""
+    },
+    "wao":
+    {
+        "file":"wao.safetensors",
+        "model_strenght": 1,
+        "model_clip": 1,
+        "positive": "waostyle99",
+        "negative": ""
+    }
+}

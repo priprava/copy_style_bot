@@ -6,14 +6,14 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, BufferedIn
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from config import STYLE
 from utils.generate_image import generate_picture
-from utils.fake_generate_image import fake_generate_picture
+from utils.translate import translate
 
 
 def style_button():
     builder = InlineKeyboardBuilder()
-    for text, _ in STYLE.items():
-        print(text)
-        builder.button(text=text, callback_data=text)
+    for keys in STYLE.keys():
+        print(keys)
+        builder.button(text=keys, callback_data=keys)
 
     builder.adjust()
     return builder.as_markup()
@@ -32,23 +32,23 @@ async def start_process_generate(message: types.Message, state: FSMContext):
 
 @generate_router.callback_query(generate_fsm.style)
 async def style_callback(callback: types.callback_query, state: FSMContext):
-    await state.update_data(style=STYLE.get(callback.data))
+    await state.update_data(style=callback.data)
     
     await callback.message.edit_text("Напиши промпт")
     await state.set_state(generate_fsm.prompt)
 
-    await callback.answer(f"Выбран стиль: {STYLE.get(callback.data)}")
+    await callback.answer(f"Выбран стиль: {callback.data}")
 
 @generate_router.message(generate_fsm.prompt)
 async def prompt_process(message: types.Message, state: FSMContext):
-    prompt = message.text
+    prompt = await translate(message.text)
+    print(prompt, message.text)
     data = await state.get_data()
     await state.clear()
     
     await message.answer("генерируется")
     try:
         #Типо функция обработки описания
-        #buffered_photo = BufferedInputFile(await fake_generate_picture(data.get("style")), filename="photo.jpg")
         buffered_photo = BufferedInputFile(await generate_picture(data.get("style"), prompt), filename="photo.png")
         #-------------------------------
         await message.answer_photo(photo = buffered_photo)

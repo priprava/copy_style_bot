@@ -1,14 +1,14 @@
 {
   "3": {
     "inputs": {
-      "seed": 304786246104418,
-      "steps": 27,
+      "seed": 594192064298680,
+      "steps": 30,
       "cfg": 5,
       "sampler_name": "euler",
       "scheduler": "normal",
       "denoise": 1,
       "model": [
-        "10",
+        "11",
         0
       ],
       "positive": [
@@ -35,25 +35,25 @@
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
-      "title": "Load Checkpoint"
+      "title": "Загрузить сheckpoint"
     }
   },
   "5": {
     "inputs": {
-      "width": 768,
-      "height": 1344,
+      "width": 704,
+      "height": 1408,
       "batch_size": 1
     },
     "class_type": "EmptyLatentImage",
     "_meta": {
-      "title": "Empty Latent Image"
+      "title": "Пустое латентное изображение"
     }
   },
   "6": {
     "inputs": {
       "text": "",
       "clip": [
-        "10",
+        "11",
         1
       ]
     },
@@ -64,9 +64,9 @@
   },
   "7": {
     "inputs": {
-      "text": "text, watermark, lazyneg",
+      "text": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, bad anatomy, watermark, signature, cut off, low contrast, underexposed, overexposed, bad art, beginner, amateur, distorted face",
       "clip": [
-        "10",
+        "11",
         1
       ]
     },
@@ -88,7 +88,7 @@
     },
     "class_type": "VAEDecode",
     "_meta": {
-      "title": "VAE Decode"
+      "title": "Декодировать VAE"
     }
   },
   "9": {
@@ -120,7 +120,26 @@
     },
     "class_type": "LoraLoader",
     "_meta": {
-      "title": "LoraLoader"
+      "title": "Стиль"
+    }
+  },
+  "11": {
+    "inputs": {
+      "lora_name": "ino-yamanaka-s1-illustriousxl-lora-nochekaiser.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "10",
+        0
+      ],
+      "clip": [
+        "10",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Персонаж"
     }
   }
 }
